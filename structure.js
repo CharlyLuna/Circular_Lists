@@ -23,4 +23,19 @@ export default class Estructura {
       return true;
     }
   }
+
+  search(nombre) {
+    if (nombre == this._tail.getName()) {
+      return this._tail;
+    } else {
+      let i = this._head;
+      while (i._next != this._head) {
+        if (i.getName() == nombre) {
+          return i;
+        }
+        i = i._next;
+      }
+      return null;
+    }
+  }
 }
