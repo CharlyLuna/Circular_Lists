@@ -5,31 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CircularLists</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>LISTAS CIRCULARES- RUTA FORMADA POR BASES</h1>
-    <div>
+    <div class="container">
       <form>
         <p>INFORMACION DE LA BASE</p>
-        <div>
+        <div class="input">
           <label for="txtName">Nombre: </label>
           <input type="text" id="txtName" />
         </div>
         <br />
-        <div>
+        <div class="input">
           <label for="txtCode">Minutos: </label>
           <input type="number" id="txtMinutes" />
         </div>
         <br />
-        <button type="button" id="btnAdd">Agregar</button>
-        <button type="button" id="btnTarjeta">Crear Tarjeta</button>
-        <button type="button" id="btnDel">Eliminar</button>
-        <button type="button" id="btnSearch">Buscar</button>
-        <button type="button" id="btnList">Listar</button>
-        <button type="button" id="btnListInv">Listar Inversamente</button>
+        <div class="button">
+          <button type="button" id="btnAdd">Agregar</button>
+          <button type="button" id="btnDel">Eliminar</button>
+          <button type="button" id="btnSearch">Buscar</button>
+          <button type="button" id="btnList">Listar</button>
+          <button type="button" id="btnListInv">Listar Inversamente</button>
+        </div>
       </form>
+      <br />
+      <div id="info"></div>
     </div>
-    <div id="info"></div>
+    <div class="container2">
+      <p>TARJETA</p>
+      <div class="input">
+        <label for="txtName">Base de inicio: </label>
+        <input type="text" id="txtBase" />
+      </div>
+      <br />
+      <div class="input">
+        <label for="txtCode">Hora de inicio: </label>
+        <input type="number" id="txtInicio" />
+      </div>
+      <br />
+      <div class="input">
+        <label for="txtCode">Duración(Min): </label>
+        <input type="number" id="txtDuracion" />
+      </div>
+      <br />
+      <div class="button">
+        <button type="button" id="btnTarjeta">Crear Tarjeta</button>
+      </div>
+      <div id="recorrido"></div>
+    </div>
+
     <script src="main.js" type="module"></script>
   </body>
 </html>

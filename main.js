@@ -11,6 +11,8 @@ class App {
     this._btnList.addEventListener("click", this.list);
     this._btnListInv = document.getElementById("btnListInv");
     this._btnListInv.addEventListener("click", this.listInv);
+    this._btnTarjeta = document.getElementById("btnTarjeta");
+    this._btnTarjeta.addEventListener("click", this.tarjeta);
   }
 
   addProduct = () => {
@@ -32,7 +34,7 @@ class App {
     let base = new Base(name, minutes);
     let added = this._structure.add(base);
     if (added) {
-      info.innerHTML += `Base agregada: ${base.info()}`;
+      info.innerHTML += `<p>Base agregada: </p> ${base.info()}`;
     } else {
       info.innerHTML +=
         "<h3>Esta base no puede ser agregada porque ya existe</h3>";
@@ -58,6 +60,16 @@ class App {
   listInv = () => {
     let info = document.getElementById("info");
     info.innerHTML += `<p>LISTADO INVERTIDO DE BASES: ${this._structure.listInv()}<p>`;
+  };
+
+  tarjeta = () => {
+    let base = document.getElementById("txtBase").value.toUpperCase();
+    let hour = document.getElementById("txtInicio").value;
+    let time = document.getElementById("txtDuracion").value;
+
+    let recorrido = document.getElementById("recorrido");
+    recorrido.innerHTML += `<p>TARJETA DE RECORRIDO:</p> 
+    <p>${this._structure.createCard(base, Number(hour), Number(time))}</p>`;
   };
 }
 new App();

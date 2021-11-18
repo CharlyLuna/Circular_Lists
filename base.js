@@ -7,7 +7,7 @@ export default class Base {
   }
 
   info() {
-    return `<div>(${this._name})>${this._minutes}min</div>`;
+    return `<div> <p>(${this._name})>${this._minutes}min</p></div>`;
   }
   getName() {
     return this._name;
