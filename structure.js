@@ -11,7 +11,7 @@ export default class Estructura {
       base._prev = base;
       this._tail = base;
       return true;
-    } else {
+    } else if (!this.search(base.getName())) {
       base._next = this._head;
       base._prev = this._tail;
       this._tail._next = base;
@@ -19,9 +19,9 @@ export default class Estructura {
       this._head._prev = this._tail;
       console.log(this._head);
       console.log(base);
-
       return true;
     }
+    return false;
   }
 
   search(nombre) {
@@ -36,6 +36,38 @@ export default class Estructura {
         i = i._next;
       }
       return null;
+    }
+  }
+
+  list() {
+    if (this._head == null) {
+      return "No hay bases en esta ruta";
+    } else {
+      return this._list(this._head);
+    }
+  }
+
+  _list(node) {
+    if (node == this._tail) {
+      return node.info();
+    } else {
+      return `${node.info()} ${this._list(node._next)}`;
+    }
+  }
+
+  listInv() {
+    if (this._head == null) {
+      return "No hay bases en esta ruta";
+    } else {
+      return this._listInv(this._tail);
+    }
+  }
+
+  _listInv(node) {
+    if (node == this._head) {
+      return node.info();
+    } else {
+      return `${node.info()} ${this._listInv(node._prev)}`;
     }
   }
 }
