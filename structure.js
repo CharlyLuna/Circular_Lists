@@ -81,7 +81,10 @@ export default class Estructura {
     let min = 0;
     let parada = this.search(base)._next;
     let message = `(${base})>${this._timeFormat(hour, min)}`;
-
+    //En caso de que la primera parada ya exceda el tiempo limite,no se avanza a la parada;
+    if (count + parada.getMinutes() > time) {
+      stop = true;
+    }
     while (count < time && !stop) {
       min += parada.getMinutes();
       message += ` (${parada.getName()})>${this._timeFormat(hour, min)}`;
