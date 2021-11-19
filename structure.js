@@ -17,8 +17,6 @@ export default class Estructura {
       this._tail._next = base;
       this._tail = base;
       this._head._prev = this._tail;
-      console.log(this._head);
-      console.log(base);
       return true;
     }
     return false;
@@ -89,7 +87,6 @@ export default class Estructura {
       message += ` (${parada.getName()})>${this._timeFormat(hour, min)}`;
       count += parada.getMinutes();
       parada = parada._next;
-      console.log(count);
       //Si el tiempo para llegar a la sig parada es mayor al limite se acaba el recorrido;
       if (count + parada.getMinutes() > time) {
         stop = true;
@@ -129,8 +126,6 @@ export default class Estructura {
     if (name == this._head.getName() && this._head._next == this._head) {
       this._head = null;
       this._tail = null;
-      console.log(this._head);
-      console.log(this._tail);
       return aux;
     } else if (name == this._head.getName()) {
       //Cuando se quiera eliminar el primero
@@ -139,11 +134,8 @@ export default class Estructura {
       this._head._next = null;
       this._head._prev = null;
       this._head = this._tail._next;
-      console.log(this._head);
-      console.log(this._tail);
       return aux;
     } else {
-      console.log(this._head);
       return this._delete(name, this._head);
     }
   }
