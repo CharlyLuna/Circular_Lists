@@ -25,6 +25,9 @@ export default class Estructura {
   }
 
   search(nombre) {
+    if (this._head == null) {
+      return null;
+    }
     if (nombre == this._tail.getName()) {
       return this._tail;
     } else {
@@ -115,5 +118,56 @@ export default class Estructura {
       return `${hour}:0${minutes}`;
     }
     return `${hour}:${minutes}`;
+  }
+
+  delete(name) {
+    let aux = this._head;
+    if (this._head == null) {
+      return null;
+    }
+    //Cuando se quiera eliminar el inicio y sea el unico que hay;
+    if (name == this._head.getName() && this._head._next == this._head) {
+      this._head = null;
+      this._tail = null;
+      console.log(this._head);
+      console.log(this._tail);
+      return aux;
+    } else if (name == this._head.getName()) {
+      //Cuando se quiera eliminar el primero
+      this._tail._next = this._head._next;
+      this._head._next._prev = this._tail;
+      this._head._next = null;
+      this._head._prev = null;
+      this._head = this._tail._next;
+      console.log(this._head);
+      console.log(this._tail);
+      return aux;
+    } else {
+      console.log(this._head);
+      return this._delete(name, this._head);
+    }
+  }
+
+  _delete(name, node) {
+    if (node == this._tail && node.getName() == name) {
+      //Cuando se va a eliminar el ultimo
+      node._prev._next = this._head;
+      this._head._prev = node._prev;
+      this._tail = node._prev;
+      node._next = null;
+      node._prev = null;
+      return node;
+    } else if (node.getName() == name) {
+      node._prev._next = node._next;
+      node._next._prev = node._prev;
+      node._next = null;
+      node._prev = null;
+      return node;
+    } else if (node._next == this._head) {
+      //Cuando ya hayamos llegado al final y no se encontro el id;
+      return null;
+    } else {
+      return this._delete(name, node._next);
+    }
   }
 }

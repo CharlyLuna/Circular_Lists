@@ -13,6 +13,8 @@ class App {
     this._btnListInv.addEventListener("click", this.listInv);
     this._btnTarjeta = document.getElementById("btnTarjeta");
     this._btnTarjeta.addEventListener("click", this.tarjeta);
+    this._btnDelete = document.getElementById("btnDel");
+    this._btnDelete.addEventListener("click", this.delete);
   }
 
   addProduct = () => {
@@ -70,6 +72,17 @@ class App {
     let recorrido = document.getElementById("recorrido");
     recorrido.innerHTML += `<p>TARJETA DE RECORRIDO:</p> 
     <p>${this._structure.createCard(base, Number(hour), Number(time))}</p>`;
+  };
+
+  delete = () => {
+    let info = document.getElementById("info");
+    let name = document.getElementById("txtName").value.toUpperCase();
+    let deleted = this._structure.delete(name);
+    if (deleted == null) {
+      info.innerHTML += "<h3>Esta base no se ha encontrado</h3>";
+    } else {
+      info.innerHTML += `<h3>Se eliminó: ${deleted.info()}<h3> `;
+    }
   };
 }
 new App();
